@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') 
+        {
+            steps 
+            {
+                echo 'BuildAPP'
+            }
+        }
+        stage('test')
+        {
+           steps
+           {
+              echo 'testapp'
+           }
+        }
+        
+        stage('deploy')
+        {
+           steps
+            {
+                echo 'deployapp'
+            }
+        }
+    }
+ post {
+      
+        always {
+            emailext body: 'any', subject: 'pipeline status', to: 'cu.16bcs1367@gmail.com'
+        }
+    }
+}
